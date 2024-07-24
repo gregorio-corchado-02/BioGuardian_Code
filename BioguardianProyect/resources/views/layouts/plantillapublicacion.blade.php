@@ -9,7 +9,7 @@
     <title>@yield('title')</title>
     @vite(['resources/js/app.js'])
 </head>
-<body>
+<body style='background-image: url(https://wallpapers.com/images/hd/1920-x-1080-nature-desktop-27uczyqacd94zw3s.jpg)'>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">

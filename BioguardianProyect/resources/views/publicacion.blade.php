@@ -1,4 +1,4 @@
-@extends('layouts.plantillahome')
+@extends('layouts.plantillapublicacion')
 
 @section('contenido')
 
@@ -18,39 +18,120 @@
 @endforeach
 @endif
 
-<div class="container mt-5">
-  <div class="card">
-    <div class="card-header text-primary text-center fs-4">
-      Crear Publicación
-    </div>
-    <div class="card-body text-center">
-      <form method="POST" action="/#" enctype="multipart/form-data"> <!-- Agregado enctype para manejar archivos -->
-        @csrf
-        <div class="mb-2">
-          <label for="titulo" class="form-label">Titulo</label>
-          <input type="text" name="titulo" id="titulo" class="form-control">
-          <p class="fw-bolder">{{ $errors->first('titulo')}}</p>
+<div class="login-container">
+    <div class="login-card row">
+        <div class="col-md-5 text-center">
+            <img src="{{ asset('logo.png') }}" alt="BIOGUARDIAN" width="150" class="login-image mt-4">
+            <h1 class="login-title mt-4">BIOGUARDIAN</h1>
         </div>
-        <div class="mb-2">
-          <label for="comentarios" class="form-label">Comentarios</label>
-          <div class="form-floating">
-            <textarea class="form-control" name="comentarios" id="comentarios" placeholder="Leave a comment here" style="height: 100px"></textarea>
-            <p class="fw-bolder">{{ $errors->first('comentarios')}}</p>
-          </div>
-        </div>
-        <div class="mb-2">
-          <label for="foto" class="form-label">Seleccionar foto</label>
-          <input type="file" name="foto" id="foto" class="form-control">
-          <p class="fw-bolder">{{ $errors->first('foto')}}</p>
+        <div class="col-md-7">
+            <div class="login-header">
+                Crear Publicación
+            </div>
+            <div class="card-body">
+                <form method="POST" action="/guardarpublicacion" enctype="multipart/form-data">
+                @csrf
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título</label>
+                        <input type="text" name="titulo" id="titulo" class="form-control @error('titulo') is-invalid @enderror" value="{{ old('titulo') }}">
+                        @error('titulo')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="comentarios" class="form-label">Comentarios</label>
+                        <div class="form-floating">
+                            <textarea class="form-control @error('comentarios') is-invalid @enderror" name="comentarios" id="comentarios" placeholder="Leave a comment here" style="height: 100px">{{ old('comentarios') }}</textarea>
+                            <label for="comentarios">Escribe tus comentarios aquí</label>
+                            @error('comentarios')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="foto" class="form-label">Seleccionar foto</label>
+                        <input type="file" name="foto" id="foto" class="form-control @error('foto') is-invalid @enderror">
+                        @error('foto')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="d-grid mb-4">
+                        <button class="btn btn-success" type="submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="card-footer text-body-secondary">
-      <div>
-        <button class="btn btn-success" type="submit">Guardar</button>
-      </div>
-      </form>
-    </div>
-  </div>
 </div>
 
+<style>
+body {
+    font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto al cuerpo del documento */
+}
+
+.navbar {
+    background-color: #28a745;            
+}
+
+.navbar-brand img {
+    width: 46px;
+    border-radius: 50%;
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('https://wallpapercave.com/wp/wp2531406.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-image {
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto; /* Centra horizontalmente la imagen */
+    padding-top: 60px; /* Añade padding en la parte superior */
+    
+}
+
+.login-header {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 20px;
+    font-weight: 700; /* Hace el texto más grueso */ /* Convierte el texto a mayúsculas */
+    letter-spacing: 0.5px; /* Añade espacio entre las letras */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.login-title {
+    font-family: 'Arial', sans-serif; /* Tipografía */
+    font-size: 1.5em; /* Tamaño de fuente */
+    color: #333; /* Color del texto */
+    text-align: center; /* Alineación */
+    margin-top: 20px; /* Espaciado superior */
+    margin-bottom: 20px; /* Espaciado inferior */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra del texto */
+    letter-spacing: 0.5px; /* Espaciado entre letras */
+}
+
+</style>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+
 @endsection
+
