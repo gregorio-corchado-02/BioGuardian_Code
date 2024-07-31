@@ -9,7 +9,7 @@
     <title>@yield('title')</title>
     @vite(['resources/js/app.js'])
 </head>
-<body style='background-image: url(https://wallpapers.com/images/hd/1920-x-1080-nature-desktop-27uczyqacd94zw3s.jpg)'>
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -21,10 +21,10 @@
                         <a class="nav-link active" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Perfil</a>
+                        <a class="nav-link" href="/perfil">Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Crear Publicacion</a>
+                        <a class="nav-link" href="/publicar">Crear Publicacion</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Ayuda</a>

@@ -3,18 +3,6 @@
 @section('contenido')
 
 <style>
-
-body {
-    background-size: cover; /* Hace que la imagen cubra todo el fondo sin repetirse */
-    background-color: #FFFFFF;
-  }
-
-  .carousel-item img {
-    width: 100%;
-    height: 500px; /* Define una altura fija */
-    object-fit: cover; /* Mantiene la relación de aspecto y recorta el desbordamiento */
-  }
-
   .navbar {
     background-color: #28a745;            
   }
@@ -26,13 +14,37 @@ body {
 
   .card-container {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 1rem; /* Espacio entre las cards */
+    gap: 10px; 
+    width: 100%;
+    height: 30%;
   }
 
+  body {
+    font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto al cuerpo del documento */
+    background: linear-gradient(
+        135deg, 
+        rgba(71, 241, 79) 0%, /* Color tomate con 80% de opacidad */
+        rgba(255, 255, 255) 100% /* Color dorado con 80% de opacidad */
+    );
+    background-size: cover;
+    background-position: center;
+  }
+
+
   .card {
-    flex: 1 1 calc(25% - 1rem); /* Ajusta el ancho de las cards y el espacio entre ellas */
-    max-width: calc(25% - 1rem); /* Asegura que no se desborden */
+    justify-content: center;
+    width: 70%;
+    height: 210px;
+    margin-bottom: 15px;
+    position: relative; /* Añadir posición relativa para la card */
+  }
+
+  .button-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
   }
 </style>
 
@@ -44,7 +56,7 @@ body {
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="https://visado-india.es/wp-content/uploads/2023/01/animales-de-la-india-como-es-su-fauna.jpg" class="d-block w-100" alt="...">
+      <img src="https://nortempo.com/wp-content/uploads/2023_06_05_dia-del-medio-ambiente.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h1 class="text-white">BioGuardian</h1>
         <p>Some representative placeholder content for the first slide.</p>
@@ -75,34 +87,36 @@ body {
   </button>
 </div>
 
-<h1 class="display-1 text-dark text-center mt-4">Publicación</h1>
-
-<div class='container mt-4'>
-  <div class="card-container">
-    @foreach ($consultaPublicaciones as $item)
-      <div class="card mb-3">
-        <img src="https://media.istockphoto.com/id/177794699/es/foto/lobo-gris-retrato.jpg?s=612x612&w=0&k=20&c=qAiwRte1ZceIxyok1IuzX88-ppmof9Ci9Aq7LZQCZ84=" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text fs-5">{{$item->titulo}}</p>
-          <p class="card-text fs-5">{{$item->comentario}}</p>
-          
-          <div class='mb-2 d-grid mx-auto'>
-            <button type='button' class='btn btn-outline-success' data-bs-target='#editar{{ $item->id }}' data-bs-toggle='modal'>
+<div class="card-container">
+  @foreach ($consultaPublicaciones as $item)
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4 img-container">
+        <img src="https://arbolabc.nyc3.cdn.digitaloceanspaces.com/Science/animals/Images_for_sliders/Images_for_sliders/cardenal/cardenal3.jpg" class="img-fluid rounded-start card-img" alt="..." style="height: 100%;">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{$item->titulo}}</h5>
+          <p class="card-text"> {{$item->fecha}}</p>
+          <p class="card-text"> {{$item->comentario}}</p>
+          <div class="button-container">
+            <button type='button' class='btn btn-success' data-bs-target='#editar{{ $item->id }}' data-bs-toggle='modal'>
               Editar
             </button>
-          </div>
-
-          <div class='mb-2 d-grid mx-auto'>
-            <button type='button' class='btn btn-outline-success' data-bs-target='#eliminar{{ $item->id }}' data-bs-toggle='modal'>
-              Eliminar
+            <button type='button' class='btn btn-success' data-bs-target='#eliminar{{ $item->id }}' data-bs-toggle='modal'>
+              Borrar
             </button>
           </div>
         </div>
       </div>
-    @endforeach
+    </div>
   </div>
+  @include('partials.editarpubli')
+  @include('partials.eliminarpubli')
+  @endforeach
 </div>
 
 @endsection
+
+
 

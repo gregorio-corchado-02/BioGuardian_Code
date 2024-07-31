@@ -55,6 +55,8 @@
         }
     </style>
 
+    
+
     <div class="content">
         <div class="card profile-card">
             <div class="card-header">
@@ -63,18 +65,18 @@
             </div>
             <div class="card-body text-center">
                 <div class="profile-info">
-                    <p><strong>Nombre de Usuario:</strong> Luis Perez Garcia</p>
-                    <p><strong>Correo:</strong> LuisP1999@gmail.com</p>
-                    <p><strong>Fecha de Nacimiento:</strong> 23 de Octubre de 1999</p>
-                    <p><strong>Fecha en la que se Unió:</strong> 23-16-2021</p>
+                    <p><strong>Nombre de Usuario:</strong> {{$usuario->nombre}}</p>
+                    <p><strong>Correo:</strong> {{$usuario->correo}}</p>
+                    <p><strong>Fecha de Nacimiento:</strong> {{$usuario->nacimiento}}</p>
+                    <p><strong>Fecha en la que se Unió:</strong> {{$usuario->created_at}}</p>
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-end">
-                <button type="button" class="btn btn-success" data-bs-target="#" data-bs-toggle="modal">
-                    Eliminar
+                <button type="button" class="btn btn-success" data-bs-target='#editar{{ $usuario->id }}' data-bs-toggle='modal'>
+                    Editar
                 </button>
             </div>
         </div>
     </div>
-
+@include('partials.editarpubli')
 @endsection

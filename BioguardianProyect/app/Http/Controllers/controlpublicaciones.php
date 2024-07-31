@@ -34,4 +34,23 @@ class controlpublicaciones extends Controller
         ]);
         return redirect('/publicar')->with('confirmacion','Tu recuerdo se guardo en labase de datos');
     }
+
+    public function editarpublicacion(Request $req, string $id)
+    {
+        DB::table('tb_publicaciones')->where('id',$id)->update([
+            'titulo'=>$req->input('txtTitulo'),
+            'comentario'=>$req->input('txtComentario'),
+            'updated_at'=>Carbon::now(),
+        ]);
+        return redirect('/')->with('confirmacion','Publicación editada correctamente');
+
+    }
+
+    public function eliminarpublicacion(Request $req, string $id)
+    {
+        DB::table('tb_publicaciones')->where('id', $id)->delete();
+
+        return redirect('/')->with('confirmacion', 'Publicación eliminada correctamente');
+    }
+
 }

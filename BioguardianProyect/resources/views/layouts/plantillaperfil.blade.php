@@ -22,10 +22,10 @@
                         <a class="nav-link active" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Perfil</a>
+                        <a class="nav-link" href="/perfil">Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Crear Publicacion</a>
+                        <a class="nav-link" href="/publicar">Crear Publicacion</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Ayuda</a>

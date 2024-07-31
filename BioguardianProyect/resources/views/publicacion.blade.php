@@ -67,6 +67,9 @@
 <style>
 body {
     font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto al cuerpo del documento */
+    background-image: url('https://wallpapercave.com/wp/wp2531406.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .navbar {
@@ -83,9 +86,6 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url('https://wallpapercave.com/wp/wp2531406.jpg');
-    background-size: cover;
-    background-position: center;
 }
 
 .login-card {
@@ -98,7 +98,7 @@ body {
 }
 
 .login-image {
-    border-radius: 50%;
+    
     object-fit: cover;
     display: block;
     margin: 0 auto; /* Centra horizontalmente la imagen */
