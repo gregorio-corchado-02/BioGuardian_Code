@@ -16,23 +16,27 @@ class controlpublicaciones extends Controller
 
     public function guardarp(Request $req)
     {
-        $idUsuario = 2;
-
+        $idUsuario = 2; // Cambia esto para obtener el ID del usuario autenticado
+    
+        // Verifica si el archivo es válido y lo guarda en 'public/fotos'
         $fotoPath = null;
         if ($req->hasFile('foto') && $req->file('foto')->isValid()) {
             $fotoPath = $req->file('foto')->store('public/fotos');
         }
-
+    
+        // Inserta los datos en la tabla 'tb_publicaciones'
         DB::table('tb_publicaciones')->insert([
-            'titulo'=>$req->input('titulo'),
-            'id_usuario'=> $idUsuario = 2,
-            'comentario'=>$req->input('comentarios'),
+            'titulo' => $req->input('titulo'),
+            'id_usuario' => $idUsuario,
+            'comentario' => $req->input('comentarios'),
             'foto_publi' => $fotoPath,
-            'fecha'=>Carbon::now(),
-            'created_at'=>Carbon::now(),
-            'updated_at'=>Carbon::now(),
+            'fecha' => Carbon::now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
-        return redirect('/publicar')->with('confirmacion','Tu recuerdo se guardo en labase de datos');
+    
+        // Redirige con mensaje de confirmación
+        return redirect('/publicar')->with('confirmacion', 'Tu recuerdo se guardó en la base de datos');
     }
 
     public function editarpublicacion(Request $req, string $id)

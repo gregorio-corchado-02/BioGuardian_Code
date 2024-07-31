@@ -65,18 +65,17 @@
             </div>
             <div class="card-body text-center">
                 <div class="profile-info">
-                    <p><strong>Nombre de Usuario:</strong> {{$usuario->nombre}}</p>
-                    <p><strong>Correo:</strong> {{$usuario->correo}}</p>
-                    <p><strong>Fecha de Nacimiento:</strong> {{$usuario->nacimiento}}</p>
-                    <p><strong>Fecha en la que se Unió:</strong> {{$usuario->created_at}}</p>
+                    <p><strong>Nombre de Usuario:</strong> Daniel Leal</p>
+                    <p><strong>Correo:</strong>DaniLeal@gmail.com</p>
+                    <p><strong>Fecha de Nacimiento:</strong>12/febrero/2002</p>
+                    <p><strong>Fecha en la que se Unió:</strong>24/junio/2024</p>
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-end">
-                <button type="button" class="btn btn-success" data-bs-target='#editar{{ $usuario->id }}' data-bs-toggle='modal'>
+                <button type="button" class="btn btn-success" data-bs-target='#' data-bs-toggle='modal'>
                     Editar
                 </button>
             </div>
         </div>
     </div>
-@include('partials.editarpubli')
 @endsection

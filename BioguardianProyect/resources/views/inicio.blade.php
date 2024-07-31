@@ -87,13 +87,12 @@
   </button>
 </div>
 
-
+<div class="card-container">
   @foreach ($consultaPublicaciones as $item)
-  <div class="card-container">
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4 img-container">
-        <img src="<img src="{{ asset('public/' . $item->foto_publi) }}" class="img-fluid rounded-start card-img" alt="{{ $item->titulo }}" style="height: 100%; object-fit: cover;">" class="img-fluid rounded-start card-img" alt="..." style="height: 100%;">
+        <img src="https://arbolabc.nyc3.cdn.digitaloceanspaces.com/Science/animals/Images_for_sliders/Images_for_sliders/cardenal/cardenal3.jpg" class="img-fluid rounded-start card-img" alt="..." style="height: 100%;">
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -114,11 +113,7 @@
   </div>
   @include('partials.editarpubli')
   @include('partials.eliminarpubli')
-  </div>
   @endforeach
-
+</div>
 
 @endsection
-
-
-

@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 class controlusuarios extends Controller
 {
 
-    public function index()
-    {
-        $usuario = Auth::user();
-        return view('pefil', compact('usuario'));
-    }
 
     public function guardaru(Request $req)
     {
